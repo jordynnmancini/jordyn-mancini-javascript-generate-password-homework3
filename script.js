@@ -25,15 +25,11 @@ var randomSymbol = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?", 
 var allPossibleCharacters = [];
 
 
-//define generatePassword function - rest of the code lives within this function  
 function generatePassword() {
+// ask for user's input 
   var pwLength = Number.parseInt(window.prompt("How many characters do you want your password to be? Enter a value between 8-128."), 10);
   if (pwLength < 8 || pwLength > 128) {
-    window.alert("Password must be between 8-128 characters.");
-    window.prompt("Enter a length between 8-128:");
-  }
-  if (pwLength < 8 || pwLength > 128) {
-    window.alert("Please try again."); 
+    window.alert("Password must be between 8-128 characters. Please try again.");
     return; 
   }
   var confirmLowerCase = window.confirm("do you want lower case letters?");
@@ -41,32 +37,34 @@ function generatePassword() {
   var confirmNumbers = window.confirm("do you want numbers?");
   var confirmSymbols = window.confirm("do you want symbols?");
 
-  if (confirmLowerCase === false && confirmUpperCase === false && confirmNumbers === false && confirmSymbols === false) {
+  // determine which types of characters are available for the password based on the user's selections 
+  if (!confirmLowerCase && !confirmUpperCase && !confirmNumbers && !confirmSymbols) {
     window.alert("Cannot generate password based on your selection. Please try again.");
     return;
 
   } else {
 
-    if (confirmLowerCase === true) {
+    if (confirmLowerCase) {
       allPossibleCharacters = allPossibleCharacters.concat(randomLower);
     }
 
 
-    if (confirmUpperCase === true) {
+    if (confirmUpperCase) {
       allPossibleCharacters = allPossibleCharacters.concat(randomUpper);
 
     }
 
-    if (confirmNumbers === true) {
+    if (confirmNumbers) {
       allPossibleCharacters = allPossibleCharacters.concat(randomNumber);
 
     }
 
-    if (confirmSymbols === true) {
+    if (confirmSymbols) {
       allPossibleCharacters = allPossibleCharacters.concat(randomSymbol);
 
     }
     
+    // use a for loop to select a random assortment of chacters at the length the user entered 
     var password = [];
 
     for (var i = 0; i < pwLength; i++) {
@@ -74,6 +72,7 @@ function generatePassword() {
       password.push(random);
     }
 
+    // join the random characters into a string to be rendered on the screen as a password 
     var finalPW = password.join("");
     return finalPW;
   }
