@@ -11,7 +11,7 @@ This password geneartor asks the user to select a password length between 8-128 
 
 
 ## Link to Deployed Project 
-
+https://jordynnmancini.github.io/jordyn-mancini-javascript-generate-password-homework3/ 
 
 
 ## Demonstration
